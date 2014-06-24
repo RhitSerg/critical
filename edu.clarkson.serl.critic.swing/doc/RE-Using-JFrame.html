@@ -1,0 +1,74 @@
+<html>
+<script type="text/javascript" src="sh_main.js"></script>
+<script type="text/javascript" src="lang/sh_java.js"></script>
+<link type="text/css" rel="stylesheet" href="css/sh_ide-eclipse.css">
+<link type="text/css" rel="stylesheet" href="css/document_style.css">
+<body onload="sh_highlightDocument();" id="container">
+
+	<h2>How to Use JFrame</h2>
+	<p>
+		You are using a <tt>JFrame</tt> in your code [<a href="code:-CLASS-:-LINE-">Take Me There</a>]. 
+		However, you have not yet configured it properly. Here are few important steps that you should consider
+		while using a JFrame:
+	</p>
+	<ol>
+		<li>Initialize the frame, possibly with a title.</li>
+		<li>Get hold of its content pane to add new components.</li>
+		<li>
+			<a href="http://docs.oracle.com/javase/tutorial/uiswing/layout/using.html#choosing">Decide</a> 
+			if the default layout manager (<a href="http://docs.oracle.com/javase/tutorial/uiswing/layout/border.html">BorderLayout</a>) 
+			of the JFrame is suitable for your needs. If not, choose 
+			<a href="http://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html">another layout manager</a> and 
+			<a href="http://docs.oracle.com/javase/tutorial/uiswing/layout/using.html#set">set it</a> to the content pane.
+		</li>
+		<li>Add <a href="http://docs.oracle.com/javase/tutorial/ui/features/components.html">components</a> to the content pane.</li>
+		<li>Use <tt>pack()</tt> to compute the size of the frame.</li>
+		<li>Set the default close operation behavior.</li>
+		<li>Set the frame visible.</li>
+	</ol>
+	<p>The following code snippet shows these steps:</p>	
+<pre class="sh_java">
+public class Test {
+	public static void main(String[] args) throws Exception {
+		// Step 1: Create a JFrame with a title
+		JFrame frame = new JFrame("Test Application");
+		
+		// Step 2: Get hold of the content pane, which is a JPanel object
+		JPanel panel = (JPanel)frame.getContentPane();
+		
+		// Step 3 and 4: We will use the default BorderLayout, so lets just add components
+		JTextArea textArea = new JTextArea("Hello World!", 5, 15);
+		panel.add(textArea, BorderLayout.CENTER); // Add to the Center location
+		
+		JButton button = new JButton("Click Me!");
+		panel.add(button, BorderLayout.PAGE_END); // Add to the SOUTH or PAGE_END location
+		
+		// Step 5: Lets ask frame to compute its size
+		frame.pack();
+		
+		// Step 6: Lets tell the frame to terminate the application when it closes
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		// Step 7: Lets show the window
+		frame.setVisible(true);
+	}
+}
+</pre>
+
+	<h2>Here are some helpful links to get you started</h2>
+	<ul>
+		<li>
+			See <a href="http://docs.oracle.com/javase/tutorial/uiswing/components/frame.html">
+			How to Make Frames</a> for information regarding <tt>JFrame</tt>s.
+		</li>
+		<li>
+			See <a href="http://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html">
+			A Visual Guide to Layout Managers</a> for information regarding available layout managers.
+		</li>
+		<li>
+			See <a href="http://docs.oracle.com/javase/tutorial/ui/features/components.html">
+			A Visual Guide to Swing Components</a> for information regarding available Swing components.
+		</li>
+	</ul>
+</body>
+</html>

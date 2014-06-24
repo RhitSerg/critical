@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Critical
+Bundle-SymbolicName: edu.clarkson.serl.critical; singleton:=true
+Bundle-Version: 1.0.16.beta
+Bundle-Activator: edu.clarkson.serl.critic.CriticPlugin
+Bundle-Vendor: Chandan R. Rupakheti and Daqing Hou, SERL, Clarkson University, Potsdam, NY 13699-5722
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jdt.core;bundle-version="3.7.0",
+ org.eclipse.core.resources;bundle-version="3.7.100",
+ org.eclipse.jface.text;bundle-version="3.7.0",
+ org.eclipse.ui.workbench.texteditor;bundle-version="3.7.0",
+ edu.clarkson.serl.soot;bundle-version="2.4.0",
+ edu.clarkson.serl.xstream;bundle-version="1.4.1",
+ org.eclipse.ui.ide;bundle-version="3.7.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Import-Package: org.eclipse.core.expressions,
+ org.eclipse.jdt.ui,
+ org.eclipse.ui.texteditor
+Export-Package: edu.clarkson.serl.critic,
+ edu.clarkson.serl.critic.adt,
+ edu.clarkson.serl.critic.exceptions,
+ edu.clarkson.serl.critic.extension,
+ edu.clarkson.serl.critic.factory,
+ edu.clarkson.serl.critic.interpreter,
+ edu.clarkson.serl.critic.interpreter.model,
+ edu.clarkson.serl.critic.job,
+ edu.clarkson.serl.critic.loader,
+ edu.clarkson.serl.critic.util

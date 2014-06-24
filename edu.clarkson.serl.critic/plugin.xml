@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="edu.clarkson.serl.critical.factory" name="CriticAL Factory Extension Point" schema="schema/edu.clarkson.serl.critic.factory.exsd"/>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="CriticAL Action Set"
+            visible="true"
+            id="edu.clarkson.serl.critical.actionSet">
+         <menu
+               id="criticalMenu"
+               label="&amp;CriticAL">
+            <separator
+                  name="criticalGroup">
+            </separator>
+         </menu>
+         <action
+               label="Run &amp;CriticAL"
+               icon="icons/CriticAL.gif"
+               class="edu.clarkson.serl.critic.job.RunCritical"
+               tooltip="Run Critic for APIs and Libraries (CriticAL)"
+               menubarPath="criticalMenu/criticalGroup"
+               toolbarPath="criticalGroup"
+               id="edu.clarkson.serl.critical.job.SampleAction">
+         </action>
+      </actionSet>
+   </extension>
+   <extension point="org.eclipse.ui.propertyPages">
+      <page
+            adaptable="true"
+            class="edu.clarkson.serl.critic.preferences.CriticalPropertyPage"
+            id="edu.clarkson.serl.critic.preferences.propertypage"
+            name="Critical Property Page"
+            objectClass="org.eclipse.core.resources.IProject">
+            <filter name="nature" value="org.eclipse.jdt.core.javanature"/>
+      </page>
+   </extension>
+   
+	<!--<super type="org.eclipse.core.resources.marker"/> -->
+	<!-- Defines CriticAL custom markers and uses the marker view panel to see them when they are created-->
+	<extension point="org.eclipse.core.resources.markers"
+	      id="edu.clarkson.serl.critic.marker"
+	      name="CriticAL Markers">
+	      <super type="org.eclipse.core.resources.textmarker"/>
+	      <persistent value="true"/>
+	</extension>
+	<!-- Marker for Criticisms -->
+	<extension point="org.eclipse.core.resources.markers"
+	      id="edu.clarkson.serl.critic.marker.criticism"
+	      name="Criticism">
+	      <super type="edu.clarkson.serl.critic.marker"/>
+	      <persistent value="true"/>
+	</extension>
+	
+	<!-- Marker for Explanations -->
+	<extension point="org.eclipse.core.resources.markers"
+	      id="edu.clarkson.serl.critic.marker.explanation"
+	      name="Explanation">
+	      <super type="edu.clarkson.serl.critic.marker"/>
+	      <persistent value="true"/>
+	</extension>
+	<!-- Marker for Recommendations -->
+	<extension point="org.eclipse.core.resources.markers"
+	      id="edu.clarkson.serl.critic.marker.recommendation"
+	      name="Recommendation">
+	      <super type="edu.clarkson.serl.critic.marker"/>
+	      <persistent value="true"/>
+	</extension>
+	
+
+	<!-- Annotation specification:- describes what the annotation will look like and its properties -->
+   <extension point="org.eclipse.ui.editors.markerAnnotationSpecification"
+	 id="edu.clarkson.serl.critic.annotationspec"
+	 name="CriticAL Anotations">
+	 <specification
+        annotationType="edu.clarkson.serl.critic.annotation.criticism"
+        icon="/icons/Criticism.gif"
+        label="Criticisms"
+        symbolicIcon="info"/>
+	 <specification
+        annotationType="edu.clarkson.serl.critic.annotation.explanation"
+        icon="/icons/Explanation.gif"
+        label="Explanations"
+        symbolicIcon="info"/>
+	 <specification
+        annotationType="edu.clarkson.serl.critic.annotation.recommendation"
+        icon="/icons/Recommendation.gif"
+        label="Recommendations"
+        symbolicIcon="info"/>
+   </extension>
+	
+	
+	<!-- Links the annotation spec to the marker -->
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+      	<type
+			markerSeverity="0"
+			super="org.eclipse.ui.workbench.texteditor.info"
+			name="edu.clarkson.serl.critic.annotation.criticism"
+			markerType="edu.clarkson.serl.critic.marker.criticism"/>
+      	<type
+			markerSeverity="0"
+			super="org.eclipse.ui.workbench.texteditor.info"
+			name="edu.clarkson.serl.critic.annotation.explanation"
+			markerType="edu.clarkson.serl.critic.marker.explanation"/>
+      	<type
+			markerSeverity="0"
+			super="org.eclipse.ui.workbench.texteditor.info"
+			name="edu.clarkson.serl.critic.annotation.recommendation"
+			markerType="edu.clarkson.serl.critic.marker.recommendation"/>
+	</extension>
+   
+	<!-- Defines the marker updater class. Since marker is super of criticism, 
+	recommendation and explanation, having one marker update works for all. -->
+	<extension point="org.eclipse.ui.editors.markerUpdaters">
+		<updater
+			id="edu.clarkson.serl.critic.reporter.markerupdater"
+			class="edu.clarkson.serl.critic.reporter.MarkerUpdater"
+			markerType="edu.clarkson.serl.critic.marker">
+		</updater>
+	</extension>
+  
+ 	<!--Defines the decorator -->
+	<extension point="org.eclipse.ui.decorators">
+		<decorator
+        adaptable="true"
+        class="edu.clarkson.serl.critic.reporter.FileDecorator"
+        id="edu.clarkson.serl.critic.reporter.filedecorater"
+        label="Critic File Decorator"
+        lightweight="true"
+        state="true">
+			<enablement>
+				<objectClass name="org.eclipse.core.resources.IResource"/>      
+			</enablement>
+		</decorator>
+	</extension>
+	
+	<!-- Critical Error View Definition -->
+	 <extension
+	       point="org.eclipse.ui.views">
+	    <category
+	          id="edu.clarkson.serl.critic.category"
+	          name="CriticAL Views">
+	    </category>
+	    <view
+	          allowMultiple="false"
+	          category="edu.clarkson.serl.critic.category"
+	          class="edu.clarkson.serl.critic.views.CriticalErrorView"
+	          icon="icons/CriticAL.gif"
+	          id="edu.clarkson.serl.critic.markerView"
+	          name="CriticAL Analysis Report"
+	          restorable="true">
+	    </view>
+	    <view
+	          allowMultiple="false"
+	          category="edu.clarkson.serl.critic.category"
+	          class="edu.clarkson.serl.critic.views.HtmlViewer"
+	          icon="icons/CriticAL.gif"
+	          id="edu.clarkson.serl.critic.htmlView"
+	          name="Document Viewer"
+	          restorable="true">
+	    </view>
+	 </extension>	
+
+	<extension point="org.eclipse.ui.ide.markerSupport"> 
+		<markerContentGenerator 
+			id="edu.clarkson.serl.critic.markerContentGenerator" 
+			name="CriticAL Marker Generator"> 
+			<markerTypeReference id="edu.clarkson.serl.critic.marker"/> 
+			<markerFieldReference id="org.eclipse.ui.ide.severityAndDescriptionField"/> 
+			<markerFieldReference id="org.eclipse.ui.ide.locationField"/> 
+			<markerFieldReference id="org.eclipse.ui.ide.markerType"/> 
+			<markerFieldReference id="org.eclipse.ui.ide.priorityField"/> 
+			<markerFieldReference id="org.eclipse.ui.ide.resourceField"/>
+		</markerContentGenerator> 
+	</extension>
+		
+	<extension
+	       point="org.eclipse.ui.commands">
+	    <command
+	          defaultHandler="edu.clarkson.serl.critic.reporter.ShowDetailsHandler"
+	          description="Opens a detailed view of this marker."
+	          id="edu.clarkson.serl.critic.command.showDetails"
+	          name="Show Details">
+	    </command>
+	</extension>
+	
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:org.eclipse.ui.ide.MarkersView?before=org.eclipse.ui.navigate.goToResource">
+			<command
+				commandId="edu.clarkson.serl.critic.command.showDetails"
+         		icon="icons/CriticAL.gif"
+         		label="Show Details"
+         		style="push"
+         		tooltip="Opens a new view with the description of the problem.">
+				<visibleWhen checkEnabled="false">
+               		<with variable="selection">
+                          	<iterate ifEmpty="false" operator="and">
+                          		<adapt type="org.eclipse.core.resources.IMarker" >
+                            			<test 
+                            				value="edu.clarkson.serl.critic.marker" 
+                            				property="org.eclipse.ui.ide.marker.superType"/>
+                          		</adapt>	
+                          	</iterate>
+                    </with>
+				</visibleWhen>         		
+			</command>
+		</menuContribution>
+		<menuContribution
+		    class="edu.clarkson.serl.critic.reporter.MarkerContributionFactory"
+		    locationURI="popup:#AbstractTextEditorRulerContext?after=additions">
+		  	<dynamic
+		         class="edu.clarkson.serl.critic.reporter.MarkerMenuContribution"
+		         id="edu.clarkson.serl.critic.reporter.MarkerMenuContribution">
+		  	</dynamic>
+		</menuContribution>		
+	</extension>
+	
+</plugin>

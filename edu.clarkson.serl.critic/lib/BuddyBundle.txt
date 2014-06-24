@@ -1,0 +1,3 @@
+Bundle-SymbolicName: ca.mcgill.sable.soot
+Eclipse-BuddyPolicy: registered
+

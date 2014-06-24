@@ -1,0 +1,2 @@
+Bundle-SymbolicName: com.throughtworks.xstream.jar
+Eclipse-BuddyPolicy: registered

@@ -1,0 +1,101 @@
+<html>
+	<link type="text/css" rel="stylesheet" href="css/document_style.css">
+	<head>  
+		<title> Tutorial: How to use Flow Layout </title>
+	</head>
+	<body id="container">
+		<h1 style="text-align: center"> Tutorial: How to use Flow Layout </h1>
+		<h2> Key facts: </h2> 
+		<p> 1) FlowLayout is the default layout manager for JPanel objects. <br/>
+		    2) FlowLayout puts components in a row, sized at their preferred size. <br/>
+			3) If the horizontal space in the container is too small to put all the components in one row,
+			   FlowLayout will use multiple rows. <br/>
+			4) If the container is wider than necessary for a row, then the components will be aligned 
+			   according to the specified alignment. The default alignment is centered horizontally. <br/>
+			5) Alignment should be specified when creating the FlowLayout object. <br/>
+			6) The flow direction is determined by the container's componentOrientation property. Default orientation is left to right.<br/>
+            7) Spacing between components can be specified by using the setHgap() and setVgap() APIs. 
+			   Default spacing is 5 pixels for both Horizontal and Vertical spacing. <br/>		
+		</p>
+		<h2> Contents </h2>
+		<a href="#Constructors">Constructors</a><br/>
+		<a href="#Component Orientation">Component Orientation</a><br/>
+		<a href="#Spacing">Spacing Between Components</a><br/>
+		<a href="#Alignment">Alignment of Components</a><br/>
+		<a href="#Padding"> How to Increase the Margin</a><br/>
+		<h2><a name="Constructors">Constructors</a></h2>
+		<table>
+		<tr> 
+			<th> Constructor </th> 
+			<th> Purpose</th> 
+		</tr>
+		<tr> 
+			<td> FlowLayout() </td>
+			<td> 
+			Constructs a new FlowLayout object with a centered alignment and horizontal and vertical gaps with the default size of 5 pixels. 
+			</td>
+		</tr>
+		<tr>
+			<td> FlowLayout(int align) </td>
+			<td> 
+				Constructs a new FlowLayout with the alignment specified and horizontal 
+				and vertical gaps with the default size of 5 pixels. The five possible alignments are:<i> FlowLayout.LEFT, FlowLayout.LEADING, FlowLayout.CENTER, FlowLayout.TRAILING, and FlowLayout.RIGHT. </i>
+			</td>
+		</tr>
+		<tr>
+			<td> FlowLayout(int align, int hgap, int vgap) </td>
+			<td> Constructs a new FlowLayout object with the specified 
+				alignment and specified horizontal and vertical gap between components. 
+				The hgap and vgap arugments specify the number of pixels to put between components. 
+			</td>
+		</tr>
+		</table>
+		
+		<h2><a name="Component Orientation">Component Orientation</a></h2>
+		<table>
+		<tr> <th> Orientation </th> <th> Code To Achieve Desired Orientation </th> </tr>
+		<tr> <td> Left to Right </td> <td> container.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT)</td> </tr>
+		<tr> <td> Right to Left </td> <td> container.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT)</td> </tr>
+		</table>
+		
+		<h2><a name="Spacing">Spacing Between Components</a></h2>
+		<table>
+		<tr> <th> Spacing </th> <th> Code To Achieve Desired Spacing </th> </tr>
+		<tr> <td> Set horizontal spacing between components </td> <td> layout.setHgap(integer value)</td> </tr>
+		<tr> <td> Set vertical spacing between components </td> <td> layout.setVgap(integer value) </td> </tr>
+		</table>
+		
+		<h2><a name="Alignment">Alignment of Components</a></h2>
+		<table>
+		<tr> <th> Alignment </th> <th> Description </th> <th> Picture of Alignment </th> </tr>
+		<tr> <td> FlowLayout.CENTER </td> <td> This value indicates each row of components should be centered </td> 
+		<td> <img id = "center" src = "figure/flowlayoutcentered.png" width = "300" height = "125" alt = "text position image" /> </td> </tr>
+		<tr> <td> FlowLayout.LEFT </td> <td> This value indicates that each row of components should be left-justified </td> 
+		<td> <img id = "left" src = "figure/flowlayoutleading.png" width = "300" height = "125" alt = "text position image" /> </td> </tr>
+		<tr> <td> FlowLayout.RIGHT </td> <td> This value indicates that each row of components should be right-justified </td>
+		<td> <img id = "right" src = "figure/flowlayouttrailing.png" width = "300" height = "125" alt = "text position image" /> </td> </tr>
+		<tr> <td> FlowLayout.LEADING </td> 
+		     <td> This value indicates that each component should be justified to the leading edge of the containers orientation. 
+			      In this example, the orientation is right to left, so the leading edge is the right side </td> 
+			      <td> <img id = "leading" src = "figure/flowlayoutleading(right_to_left).png" width = "300" height = "125" alt = "text position image" /> </td> </tr>
+		<tr> <td> FlowLayout.TRAILING </td>
+		<td> This value indicates that each component should be justified to the trailing edge of the containers orientation.  In this example, the orientation is right to left, so the trailing edge is the left side </td>
+		<td> <img id = "trailing" src = "figure/flowlayouttrailing(right_to_left).png" width = "300" height = "125" alt = "text position image" /> </td> </tr>
+		</table>
+		<h3> Notes: </h3>
+		<p> 1) The images for FlowLayout.LEADING and FlowLayout.TRAILING are done width a right to left orientation to show the difference between FlowLayout.LEADING
+		    and FlowLayout.LEFT and FlowLayout.TRAILING and FlowLayout.RIGHT, which is not clear when using a left to right orientation. <br/>
+			2) FlowLayout.LEFT and FlowLayout.TRAILING produce the same output with a left to right orientation. FlowLayout.TRAILING and FlowLayout.RIGHT also 
+			produce the same output with a left to right orientation. <br/>
+			3) The spacing between the edge of the component and the first component in the row is determined by the hgap and vgap properties.
+		</p>
+		<h2><a name="Padding">How to Increase the Margin</a></h2>
+		<p> If you wanted to increase the margin between the edge of the container and the first component there are 2 main ways to do it: </p>
+		<table>
+		<tr> <th> Way to Increase Margin </th> <th> Code Example</th> </tr>
+		<tr> <td> Use box.createHorizontalStrut(value)</td> <td> contentPane.add(Box.createHorizontalStrut(50)); //first thing added </td> </tr>
+		<tr> <td> Add a blank JLabel of the desired width </td> <td> JLabel blankLabel = new JLabel(); <br/>
+		blankLabel.setPreferredSize(new Dimension(50,25)); <br/> contentPane.add(blankLabel); //first thing added </td> </tr>
+		</table>
+		
+</html>

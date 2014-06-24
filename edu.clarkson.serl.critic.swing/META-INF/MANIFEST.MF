@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Swing Critic Library
+Bundle-SymbolicName: edu.clarkson.serl.critic.swing;singleton:=true
+Bundle-Version: 1.0.23.beta
+Bundle-Activator: edu.clarkson.serl.critic.swing.SwingCriticPlugin
+Bundle-Vendor: Chandan R. Rupakheti & Daqing Hou, SERL, Clarkson University, Potsdam, New York
+Require-Bundle: org.eclipse.core.runtime,
+ edu.clarkson.serl.soot;bundle-version="2.4.0",
+ edu.clarkson.serl.critical;bundle-version="1.0.7"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.ui.plugin
+Bundle-ClassPath: .,
+ doc/

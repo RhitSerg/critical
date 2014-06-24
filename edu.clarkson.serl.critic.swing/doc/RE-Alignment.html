@@ -1,0 +1,33 @@
+<html>
+<link type="text/css" rel="stylesheet" href="css/document_style.css">
+<head>
+	<title>Confusion with Alignment </title>
+</head>
+<body id="container">
+	<h1>Confusion with Alignment</h1>
+	<p>
+	You are using an alignment-related API method in your code [<a href="code:-CLASS-:-LINE-">Take Me There</a>].
+	There are other related methods that provide other kinds of alignment functionalities as well and may confuse you. 
+	I thought you should know about their functionalities to make the right decision on choosing the correct one. 
+	Those methods are as follows:
+	<ol>
+	<li> 
+		<tt>setAlignmentX()</tt> and <tt>setAlignmentY()</tt> of <tt>JComponent</tt> used with parameters such as 
+		<tt>JComponent.TOP_ALIGNMENT</tt>, <tt>JComponent.LEFT_ALIGNMENT</tt>, etc.
+		These methods are designed to be used with <a href="http://docs.oracle.com/javase/tutorial/uiswing/layout/box.html">BoxLayout</a> 
+		to position the widget in each cell of <tt>BoxLayout</tt>.
+	</li>
+	<li>
+		<tt>setHorizontalAlignment()</tt> and <tt>setVerticalAlignment()</tt> of <tt>JLabel</tt> and <tt>JButton</tt> used with parameters such as 
+		<tt>JComponent.TOP</tt>, <tt>JComponent.LEFT</tt>, etc.
+		These methods are used by a component to align its content within itself irrespective of the layout manager used.
+	</li>
+	<li>
+		<tt>setHorizontalTextPosition()</tt> and <tt>setVerticalTextPosition()</tt> of <tt>JLabel</tt> and <tt>JButton</tt> used with the same parameters as 2.
+		These methods are used by a component to align the text within a <tt>JLabel</tt> or a <tt>JButton</tt> relative to its icon image.
+		You can browse to a short tutorial on text positioning from <a href="RE-Text-Positioning.html">here</a>.
+	</li>
+	</ol>
+	</p>
+</body>
+</html>

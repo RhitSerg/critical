@@ -1,0 +1,38 @@
+<html>
+<script type="text/javascript" src="sh_main.js"></script>
+<script type="text/javascript" src="lang/sh_java.js"></script>
+<link type="text/css" rel="stylesheet" href="css/sh_ide-eclipse.css">
+<link type="text/css" rel="stylesheet" href="css/document_style.css">
+<body onload="sh_highlightDocument();" id="container">
+
+	<h1>Null Layout</h1>
+	<p>
+		I see you are using <tt>null</tt> layout for a container created in your code 
+		[<a href="code:-CLASS-:-LINE-">Take Me There</a>]. 
+		
+		For any widget to be displayed, it must have a size and location determined somehow.
+		One way to do this is by directly calling <tt>JComponenet.setBounds()</tt> or <tt>JComponent.setSize()</tt> and
+		<tt>JComponent.setLocation()</tt> on the component in a container managed without a layout manager 
+		(<tt>JPanel.setLayout(null)</tt>). Alternatively, the size and location of widgets can be calculated
+		automatically using an algorithm, which is also known as LayoutManger. 
+		
+		The consequences of using absolute layout are:
+		<ol>
+		<li><b>Resizability: </b>The widgets managed by absolute layout will remain in its original size and location when the frame is resized.</li>
+		<li><b>Portability: </b>The GUI may not look the same in different platforms.</li>
+		</ol> 
+	</p>
+
+	<h2>Here are other helpful links for you</h2>
+	<ul>
+		<li>
+			See <a href="http://download.oracle.com/javase/tutorial/uiswing/layout/index.html">
+			Swing's Layout Manager Tutorial</a> for information regarding layout managers.
+		</li>
+		<li>
+			See <a href="http://download.oracle.com/javase/tutorial/uiswing/components/jcomponent.html">
+			JComponent Tutorial</a> for information regarding <tt>JComponent</tt>.
+		</li>
+	</ul>
+</body>
+</html>

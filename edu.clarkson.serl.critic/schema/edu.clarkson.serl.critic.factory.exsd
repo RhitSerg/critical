@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="edu.clarkson.serl.critical" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="edu.clarkson.serl.critical" id="factory" name="CriticAL Factory Extension Point"/>
+      </appinfo>
+      <documentation>
+         &lt;p&gt;
+This is an extension point for plugging in library support within the CriticAL framework. 
+A support plugin developer must add a subtype of &lt;em&gt;edu.clarkson.serl.critic.factory.IFactory&lt;/em&gt; 
+as a &lt;em&gt;factory&lt;/em&gt; extension.
+&lt;/p&gt;
+&lt;p&gt;
+Note that in your extension plugin you need to add the &lt;em&gt;ca.mcgill.sable.soot&lt;/em&gt; plugin to the list of dependencies to make it work.
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+         <documentation>
+            The extension point description.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="factory"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The id of the extension point supplied by the CriticAL framework, i.e., &lt;em&gt;edu.clarkson.serl.critical.factory&lt;/em&gt;.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A unique id for this extension point. If you are supporting for example the Swing framework, a better id would be &lt;em&gt;javax.swing&lt;/em&gt;
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A informative name given to the extension. If you are supporting for example the Java Swing framework, a better name would be &lt;em&gt;Swing Support Plugin&lt;/em&gt;
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="factory">
+      <annotation>
+         <documentation>
+            This extension element provides the descpription for the factory in the extension plugin.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Must implement &lt;em&gt;edu.clarkson.serl.critic.factory.IFactory &lt;/em&gt; interface to be plugged in.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":edu.clarkson.serl.critic.factory.IFactory"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         September 4, 2011
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;pre&gt;
+   &lt;extension
+         id=&quot;javax.swing&quot;
+         name=&quot;Swing Support Plugin&quot;
+         point=&quot;edu.clarkson.serl.critical.factory&quot;&gt;
+      &lt;factory class=&quot;abc.def.ghi.SwingFactory&quot; &lt;/factory&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         &lt;p&gt;
+A subtype of &lt;em&gt;edu.clarkson.serl.critic.factory.IFactory&lt;/em&gt; should be used as a factory class.
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         &lt;h3&gt;GNU Lesser General Public License v 3.0&lt;/h3&gt;
+
+&lt;p&gt;CriticAL (&lt;strong&gt;C&lt;/strong&gt;ritic for &lt;strong&gt;A&lt;/strong&gt;PIs and &lt;strong&gt;L&lt;/strong&gt;ibraries)&lt;/p&gt;
+&lt;p&gt;Copyright (C) 2011 &lt;a href=&quot;http://clarkson.edu/~rupakhcr&quot;&gt;Chandan Raj Rupakheti&lt;/a&gt; and &lt;a href=&quot;http://clarkson.edu/~dhou&quot;&gt;Daqing Hou&lt;/a&gt;, &lt;a href=&quot;http://serl.clarkson.edu/&quot;&gt;SERL&lt;/a&gt;, &lt;a href=&quot;http://clarkson.edu/&quot;&gt;Clarkson University&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see &lt;a href=&quot;http://www.gnu.org/licenses/&quot;&gt;http://www.gnu.org/licenses/&lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;pre&gt;
+Contact Us:
+Chandan Raj Rupakheti (rupakhcr@clarkson.edu)
+Daqing Hou (dhou@clarkson.edu)
+Clarkson University
+PO Box 5722
+Potsdam
+NY 13699-5722
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+</schema>

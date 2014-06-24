@@ -1,0 +1,101 @@
+<html>	
+	<link type="text/css" rel="stylesheet" href="css/document_style.css">
+	<head>  
+		<title> Tutorial: Setting Text position in a JButton or JLabel </title>
+	</head>
+	<body id="container">
+		<h1 style="text-align: center"> Tutorial: Setting Text Position in a JButton or JLabel </h1>
+		<h2> Key facts: </h2>
+		<p> 1) When setting the text position, you must set the values of both the horizontal and vertical 
+			positions using the setHorizontalTextPosition() and setVerticalTextPosition() APIs.
+			<br />
+			2) There are nine different possible positions for the text relative to the icon: over the icon, 
+			north, south, east, west, northwest, northeast, southeast, and southwest. The picture below displays the
+			nine different positions: <br />
+			<div align="center">
+				<img id = "JButtonTextPositions" src = "figure/textPositions.png" alt = "text position image" />
+			</div>
+			<br />
+		</p>
+		<h2> Contents: </h2>
+		<a href="#JButton">JButton Specifics</a><br/>
+		<a href="#JLabel">JLabel Specifics</a><br/>
+		<a name="JButton"><h2>JButton Specifics</h2></a>
+		<h3> Inputs to Acquire Different Text Positions in a JButton </h3>
+		
+		<table>
+		<tr> <th> Text Position </th> <th> setHorizontalTextPosition() Input </th> <th> setVerticalTextPosition() Input </th> </tr>
+		<tr> <td> Northwest </td> <td> AbstractButton.LEFT </td> <td> AbstractButton.TOP </td> </tr>
+		<tr> <td> North </td> <td> AbstractButton.CENTER </td> <td> AbstractButton.TOP </td> </tr>
+		<tr> <td> NorthEast </td> <td> AbstractButton.RIGHT </td> <td> AbstractButton.TOP </td> </tr>
+		<tr> <td> West </td> <td> AbstractButton.LEFT </td> <td> AbstractButton.CENTER </td> </tr>
+		<tr> <td> Over Icon </td> <td> AbstractButton.CENTER </td> <td> AbstractButton.CENTER </td> </tr>
+		<tr> <td> East </td> <td> AbstractButton.RIGHT </td> <td> AbstractButton.CENTER </td> </tr>
+		<tr> <td> Southwest </td> <td> AbstractButton.LEFT </td> <td> AbstractButton.BOTTOM </td> </tr>
+		<tr> <td> South </td> <td> AbstractButton.CENTER </td> <td> AbstractButton.BOTTOM </td> </tr>
+		<tr> <td> SouthEast </td> <td> AbstractButton.RIGHT </td> <td> AbstractButton.BOTTOM </td> </tr>
+		</table>
+		
+		<h3> JButton Example </h3>
+		<table>
+		<tr> <th> Text Position </th> <th> code to implement </th> <th> picture of output </th> </tr>
+		<tr> <td> Northwest </td> <td> northwestButton.setHorizontalTextPosition(AbstractButton.LEFT); <br />
+		                               northwestButton.setVerticalTextPosition(AbstractButton.TOP); </td> <td> <img id = "northwest" src = "figure/northwest.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> North </td> <td> northButton.setHorizontalTextPosition(AbstractButton.CENTER); <br />
+		                           northButton.setVerticalTextPosition(AbstractButton.TOP); </td> <td> <img id = "north" src = "figure/north.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> NorthEast </td> <td> northeastButton.setHorizontalTextPosition(AbstractButton.RIGHT); <br />
+		                               northeastButton.setVerticalTextPosition(AbstractButton.TOP); </td> <td> <img id = "northeast" src = "figure/northeast.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> West </td> <td> westButton.setHorizontalTextPosition(AbstractButton.LEFT); <br />
+		                          westButton.setVerticalTextPosition(AbstractButton.CENTER); </td> <td> <img id = "west" src = "figure/west.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> Over Icon </td> <td> overlapButton.setHorizontalTextPosition(AbstractButton.CENTER); <br />
+		                               overlapButton.setVerticalTextPosition(AbstractButton.CENTER); </td> <td> <img id = "overicon" src = "figure/overicon.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> East </td> <td> eastButton.setHorizontalTextPosition(AbstractButton.RIGHT); <br />
+		                          eastButton.setVerticalTextPosition(AbstractButton.CENTER); </td> <td> <img id = "east" src = "figure/east.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> Southwest </td> <td> southwestButton.setHorizontalTextPosition(AbstractButton.LEFT); <br />
+		                               southwestButton.setVerticalTextPosition(AbstractButton.BOTTOM); </td> <td> <img id = "southwest" src = "figure/southwest.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> South </td> <td> southButton.setHorizontalTextPosition(AbstractButton.CENTER); <br />
+		                           southButton.setVerticalTextPosition(AbstractButton.BOTTOM); </td> <td> <img id = "south" src = "figure/south.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> SouthEast </td> <td> southeastButton.setHorizontalTextPosition(AbstractButton.RIGHT); <br />
+		                               southeastButton.setVerticalTextPosition(AbstractButton.BOTTOM); </td> <td> <img id = "southeast" src = "figure/southeast.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		</table>
+		
+		<a name="JLabel"><h2>JLabel Specifics</h2></a>
+		<h3> Inputs to Aquire Different Text Positions in a JLabel </h3>
+		
+		<table>
+		<tr> <th> Text Position </th> <th> setHorizontalTextPosition() Input </th> <th> setVerticalTextPosition() Input </th> </tr>
+		<tr> <td> Northwest </td> <td> JLabel.LEFT </td> <td> JLabel.TOP </td> </tr>
+		<tr> <td> North </td> <td> JLabel.CENTER </td> <td> JLabel.TOP </td> </tr>
+		<tr> <td> NorthEast </td> <td> JLabel.RIGHT </td> <td> JLabel.TOP </td> </tr>
+		<tr> <td> West </td> <td> JLabel.LEFT </td> <td> JLabel.CENTER </td> </tr>
+		<tr> <td> Over Icon </td> <td> JLabel.CENTER </td> <td> JLabel.CENTER </td> </tr>
+		<tr> <td> East </td> <td> JLabel.RIGHT </td> <td> JLabel.CENTER </td> </tr>
+		<tr> <td> Southwest </td> <td> JLabel.LEFT </td> <td> JLabel.BOTTOM </td> </tr>
+		<tr> <td> South </td> <td> JLabel.CENTER </td> <td> JLabel.BOTTOM </td> </tr>
+		<tr> <td> SouthEast </td> <td> JLabel.RIGHT </td> <td> JLabel.BOTTOM </td> </tr>
+		</table>
+		
+		<h3> JLabel Example </h3>
+		<table>
+		<tr> <th> Text Position </th> <th> code to implement </th> <th> picture of output </th> </tr>
+		<tr> <td> Northwest </td> <td> northwestLabel.setHorizontalTextPosition(JLabel.LEFT); <br />
+		                               northwestLabel.setVerticalTextPosition(JLabel.TOP); </td> <td> <img id = "northwestlabel" src = "figure/northwestlabel.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> North </td> <td> northLabel.setHorizontalTextPosition(JLabel.CENTER); <br />
+		                           northLabel.setVerticalTextPosition(JLabel.TOP); </td> <td> <img id = "northlabel" src = "figure/northlabel.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> NorthEast </td> <td> northeastLabel.setHorizontalTextPosition(JLabel.RIGHT); <br />
+		                               northeastLabel.setVerticalTextPosition(JLabel.TOP); </td> <td> <img id = "northeastlabel" src = "figure/northeastlabel.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> West </td> <td> westLabel.setHorizontalTextPosition(JLabel.LEFT); <br />
+		                          westLabel.setVerticalTextPosition(JLabel.CENTER); </td> <td> <img id = "westlabel" src = "figure/westlabel.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> Over Icon </td> <td> overlapLabel.setHorizontalTextPosition(JLabel.CENTER); <br />
+		                               overlapLabel.setVerticalTextPosition(JLabel.CENTER); </td> <td> <img id = "overiconlabel" src = "figure/overiconlabel.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> East </td> <td> eastLabel.setHorizontalTextPosition(JLabel.RIGHT); <br />
+		                          eastLabel.setVerticalTextPosition(JLabel.CENTER); </td> <td> <img id = "eastlabel" src = "figure/eastlabel.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> Southwest </td> <td> southwestLabel.setHorizontalTextPosition(JLabel.LEFT); <br />
+		                               southwestLabel.setVerticalTextPosition(JLabel.BOTTOM); </td> <td> <img id = "southwestlabel" src = "figure/southwestlabel.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> South </td> <td> southLabel.setHorizontalTextPosition(JLabel.CENTER); <br />
+		                           southLabel.setVerticalTextPosition(JLabel.BOTTOM); </td> <td> <img id = "southlabel" src = "figure/southlabel.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		<tr> <td> SouthEast </td> <td> southeastLabel.setHorizontalTextPosition(JLabel.RIGHT); <br />
+		                               southeastLabel.setVerticalTextPosition(JLabel.BOTTOM); </td> <td> <img id = "southeastlabel" src = "figure/southeastlabel.png" width = "200" height = "75" alt = "text position image" /> </td> </tr>
+		</table>
+	</body>
+<html>
