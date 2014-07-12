@@ -47,6 +47,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.ToolTip;
@@ -97,16 +98,16 @@ public class MarkerMenuContribution extends ContributionItem {
 
 		// Get shared image registry of CriticAL
 		ImageRegistry imgRegistry = CriticPlugin.getDefault().getImageRegistry();
-
+		
 		// Add Critiques Menu Item
 		MenuItem criticsMenuItem = new MenuItem(menu, SWT.CASCADE, index);
 		criticsMenuItem.setText("Critiques");
 		criticsMenuItem.setImage(imgRegistry.get(CriticPlugin.IMG_CRITICAL_MAIN));
 
-
 		// Add Separator
-		new MenuItem(menu, SWT.SEPARATOR, 1);
-
+		// TODO: Adding a separator here caused a bug (https://github.com/chandanrrk/critical/issues/1).
+		// new MenuItem(menu, SWT.SEPARATOR, index-1);
+		
 		// Add Critiques sub-menu
 		Menu critiquesMenu = new Menu(menu);
 		criticsMenuItem.setMenu(critiquesMenu);
@@ -199,18 +200,25 @@ public class MarkerMenuContribution extends ContributionItem {
 				MenuItem source = (MenuItem)e.widget;
 				
 				tip.setMessage(marker.getAttribute(IMarker.MESSAGE, ""));
+				
 				Point location = source.getDisplay().getCursorLocation();
-
+				String sourceText = source.getText();
+				
 				// Use graphics control to estimate the end location of the MenuItem so that 
 				// we can start the tool tip from that point
 				GC gc = new GC(source.getDisplay());
-				Point size = gc.textExtent(source.getText()); 
+				Point size = gc.textExtent(sourceText); 
 				int newX = location.x + size.x;				// Add width of text
 				Image icon = source.getImage();
 				if(icon != null)
 					newX += icon.getBounds().width;			// Add width of image
 				
-				tip.setLocation(newX + 80, location.y);		// Add small width more
+				// HACK: To adjust the tooltip coordinates.
+				int correction = 80;
+				if(sourceText.startsWith("R"))
+					correction = 40;
+				
+				tip.setLocation(newX + correction, location.y);		// Add small width more
 				gc.dispose();
 
 				tip.setVisible(true);

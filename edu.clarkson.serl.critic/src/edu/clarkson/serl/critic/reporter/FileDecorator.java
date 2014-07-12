@@ -16,6 +16,10 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
 	
 	public void decorate(Object resource, IDecoration decoration) {
 		IResource res = (IResource)resource;
+		
+		if(res == null || res.getProject() == null)
+			return;
+		
 		if(!res.getProject().isOpen())
 			return;
 		
